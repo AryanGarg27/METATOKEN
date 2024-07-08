@@ -4,6 +4,7 @@ Overview
 This project demonstrates the creation of a simple ERC-20-like token on the Ethereum blockchain using Solidity. The contract includes basic functionalities for minting and burning tokens, and maintains a record of token balances for each address.
 
 Features
+
 Public Variables
 
 tokenName: The name of the token.
@@ -15,9 +16,11 @@ totalSupply: The total supply of tokens.
 Mapping
 
 balances: A mapping that stores the balance of each address.
+
 Mint Function
 
 Adds new tokens to the total supply and assigns them to a specific address.
+
 Burn Function
 
 Destroys tokens from a specific address, reducing the total supply, with a check to ensure the address has sufficient balance.
@@ -77,21 +80,30 @@ mapping(address => uint) public balances;
 }
 
 Usage
+
 Minting Tokens
+
 To mint tokens, call the mint function with the desired address and value. This will increase the total supply and the balance of the specified address.
 
 
 function mint(address _address, uint _value) public {
-    totalSupply += _value;
-    balances[_address] += _value;
+   
+   totalSupply += _value;
+    
+   balances[_address] += _value;
 }
+
 Burning Tokens
+
 To burn tokens, call the burn function with the desired address and value. This will decrease the total supply and the balance of the specified address, given that the address has enough tokens.
 
 
 function burn(address _address, uint _value) public {
-    if (balances[_address] >= _value) {
-       totalSupply -= _value;
-       balances[_address] -= _value;
+
+   if (balances[_address] >= _value) {
+   
+   totalSupply -= _value;
+       
+   balances[_address] -= _value;
     }
 }
