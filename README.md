@@ -7,8 +7,11 @@ Features
 Public Variables
 
 tokenName: The name of the token.
+
 tokenAbbrv: The abbreviation (symbol) of the token.
+
 totalSupply: The total supply of tokens.
+
 Mapping
 
 balances: A mapping that stores the balance of each address.
@@ -18,60 +21,42 @@ Adds new tokens to the total supply and assigns them to a specific address.
 Burn Function
 
 Destroys tokens from a specific address, reducing the total supply, with a check to ensure the address has sufficient balance.
+
 Contract Code
 The Solidity code for the contract is as follows:
 
-MyToken Contract
-Overview
-This project demonstrates the creation of a simple ERC-20-like token on the Ethereum blockchain using Solidity. The contract includes basic functionalities for minting and burning tokens, and maintains a record of token balances for each address.
-
-Features
-Public Variables
-
-tokenName: The name of the token.
-tokenAbbrv: The abbreviation (symbol) of the token.
-totalSupply: The total supply of tokens.
-Mapping
-
-balances: A mapping that stores the balance of each address.
-Mint Function
-
-Adds new tokens to the total supply and assigns them to a specific address.
-Burn Function
-
-Destroys tokens from a specific address, reducing the total supply, with a check to ensure the address has sufficient balance.
-Contract Code
-The Solidity code for the contract is as follows:
 
 
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
 
-/*
-       REQUIREMENTS
-    1. Your contract will have public variables that store the details about your coin (Token Name, Token Abbrv., Total Supply)
-    2. Your contract will have a mapping of addresses to balances (address => uint)
-    3. You will have a mint function that takes two parameters: an address and a value. 
+ REQUIREMENTS
+   1.  Your contract will have public variables that store the details about your coin (Token Name, Token Abbrv., Total Supply)
+    
+   2.  Your contract will have a mapping of addresses to balances (address => uint)
+    
+   3.  You will have a mint function that takes two parameters: an address and a value. 
        The function then increases the total supply by that number and increases the balance 
        of the “sender” address by that amount
-    4. Your contract will have a burn function, which works the opposite of the mint function, as it will destroy tokens. 
+       
+   4.  Your contract will have a burn function, which works the opposite of the mint function, as it will destroy tokens. 
        It will take an address and value just like the mint functions. It will then deduct the value from the total supply 
        and from the balance of the “sender”.
-    5. Lastly, your burn function should have conditionals to make sure the balance of "sender" is greater than or equal 
+       
+   5.  Lastly, your burn function should have conditionals to make sure the balance of "sender" is greater than or equal 
        to the amount that is supposed to be burned.
-*/
+
 
 contract MyToken {
 
 // public variables here
-
     string public tokenName = "GARG";
     string public tokenAbbrv = "GRG";
     uint public totalSupply = 0;
 
 // mapping variable here
 
-    mapping(address => uint) public balances;
+mapping(address => uint) public balances;
 
 // mint function
 
@@ -110,5 +95,3 @@ function burn(address _address, uint _value) public {
        balances[_address] -= _value;
     }
 }
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
